@@ -1,11 +1,11 @@
 <template>
-  <v-row>
-    <v-col cols="12" sm="12" md="12" lg="12">
-      <v-card></v-card>
-    </v-col>
-  </v-row>
+  <div>
+    <Login />
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Login from "@/components/Login/Login.vue";
+</script>
 
 <style lang="scss" scoped></style>
