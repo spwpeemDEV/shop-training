@@ -1,32 +1,43 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/plugins/stores/auth'
+import LayoutDefault from '@/Layouts/LayoutDefault.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
+   routes: [
     {
       path: '/login',
       name: 'Login',
       component: () => import('@/views/LoginView.vue'),
     },
-    {
-      path: '/homepage',
-      name: 'HomePage',
-      component: () => import('@/views/HomePageView.vue'),
-    },
-    { path: '/product/:id',
-      name: 'ProductDetail',
-      props: true,
-      component: () => import('@/components/HomePage/ProductDetail.vue')},
+
     {
       path: '/',
-      name: 'home',
-      component: () => import('@/views/HomeView.vue'),
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import('@/views/AboutView.vue'),
+      component: LayoutDefault,
+      children: [
+        {
+          path: '',
+          name: 'HomePage',
+          alias: ['/homepage'],
+          component: () => import('@/views/HomePageView.vue'),
+        },
+        {
+          path: 'product/:id',
+          name: 'ProductDetail',
+          props: true,
+          component: () => import('@/components/HomePage/ProductDetail.vue'),
+        },
+        {
+          path: 'about',
+          name: 'About',
+          component: () => import('@/views/AboutView.vue'),
+        },
+        {
+          path: 'home',
+          name: 'home',
+          component: () => import('@/views/HomeView.vue'),
+        },
+      ],
     },
   ],
 })
@@ -44,7 +55,7 @@ router.beforeEach((to, from, next) => {
   } else {
     // ถ้ามี token แล้วแต่พยายามเข้า /login ให้รีไดเรคไปหน้า /
     if (to.path === '/login') {
-      return next({ path: '/' })
+      return next({ path: '/homepage' })
     }
     return next() // ผ่านเงื่อนไข เข้าไปหน้าเป้าหมาย
   }

@@ -1,15 +1,22 @@
 import { instance } from '../instance'
 import { handleApiError } from '../helper'
 
+export interface ProductType {
+  id: number;
+  name: string;
+  price: number;
+}
+
 export default {
-  async getAll<TRes>(): Promise<TRes | undefined> {
-    try {
-      const response = await instance.get<TRes>('/products')  // เปลี่ยน /product เป็น /products
-      return response.data
-    } catch (err) {
-      handleApiError(err, 'getAll')
-    }
-  },
+
+async getAll<TRes>(): Promise<TRes | undefined> {
+  try {
+    const response = await instance.get<TRes>('/products');
+    return response.data;
+  } catch (err) {
+    handleApiError(err, 'getAll');
+  }
+},
 
   async getById<TRes>(id: string | number): Promise<TRes | undefined> {
     try {
