@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <v-container class="login-container" fluid>
     <v-row class="fill-height" align="center" justify="center">
       <v-col cols="12" sm="8" md="6" lg="4">
@@ -6,7 +6,7 @@
           <v-card-title class="text-h5 font-weight-bold text-center mb-4">Login</v-card-title>
           <v-form @submit.prevent="onLogin">
             <v-text-field
-              v-model="email"
+              v-model="username"
               label="Username"
               type="username"
               :rules="[required]"
@@ -29,35 +29,36 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
-import productService from "@/services/api/features/product";
+import authService, { type LoginPayload } from "@/services/api/features/login";
+import { useAuthStore } from "@/plugins/stores/auth";
 
-onMounted(() => {
-  fetchProducts();
-});
-
-const email = ref("");
+const username = ref("");
 const password = ref("");
 const router = useRouter();
-const products = ref([]);
+const authStore = useAuthStore();
 
 const required = (v: any) => {
   return !!v || "Field is required";
 };
 
-const fetchProducts = async () => {
-  try {
-    const data = await productService.getAll();
-    products.value = data || [];
-  } catch (error) {
-    console.error("Failed to fetch products", error);
-  }
-};
+const onLogin = async () => {
+  const payload: LoginPayload = {
+    username: username.value,
+    password: password.value,
+  };
 
-const onLogin = () => {
-  console.log("email", email.value);
-  console.log("password", password.value);
+  try {
+    const result = await authService.login(payload);
+    if (!result) {
+      return;
+    }
+    authStore.setToken(result.token);
+    router.push("/homepage");
+  } catch (err) {
+    console.error("Login failed", err);
+  }
 };
 </script>
 
@@ -65,4 +66,4 @@ const onLogin = () => {
 .login-container {
   height: 100vh;
 }
-</style> -->
+</style>
