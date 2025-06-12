@@ -24,11 +24,15 @@ import { useRouter } from "vue-router";
 const props = defineProps<{ products: any[] }>();
 const router = useRouter();
 
-function goToDetail(product: any) {
-  router.push({
-    name: "ProductDetail",
-    params: { id: product.id },
-    state: { product },
-  });
+// function goToDetail(product: any) {
+//   router.push({
+//     name: 'ProductDetail',
+//     params: { id: product.id },
+//     state: { product }, // ✅ ส่งทั้ง object
+//   })
+// }
+
+function goToDetail(productId: number) {
+  router.push(`/product/${productId}`);
 }
 </script>

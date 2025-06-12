@@ -10,7 +10,6 @@ const router = createRouter({
       name: 'Login',
       component: () => import('@/views/LoginView.vue'),
     },
-
     {
       path: '/',
       component: LayoutDefault,
@@ -21,12 +20,12 @@ const router = createRouter({
           alias: ['/homepage'],
           component: () => import('@/views/HomePageView.vue'),
         },
-        {
-          path: 'product/:id',
-          name: 'ProductDetail',
-          props: true,
-          component: () => import('@/components/HomePage/ProductDetail.vue'),
-        },
+      { path: '/product/:id',
+      name: 'ProductDetail',
+      component: () => import('@/components/HomePage/ProductDetail.vue')},
+      { path: '/shopping_cart',
+      name: 'ShoppingCart',
+      component: () => import('@/components/HomePage/ShoppingCart.vue')},
         {
           path: 'about',
           name: 'About',
