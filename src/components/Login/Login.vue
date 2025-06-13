@@ -29,8 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useRouter } from "vue-router";
 import authService, { type LoginPayload } from "@/services/api/features/login";
 import { useAuthStore } from "@/plugins/stores/auth";
 
