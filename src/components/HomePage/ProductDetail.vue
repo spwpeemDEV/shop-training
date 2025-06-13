@@ -14,14 +14,13 @@
         <p><strong>ชื่อ:</strong> {{ product.title }}</p>
         <p><strong>ราคา:</strong> {{ product.price }} บาท</p>
         <p><strong>รายละเอียด:</strong> {{ product.description }}</p>
-        <div style="text-align: end;">
-        <v-btn width="120px" color="primary" @click="addToCart" >เพิ่มเข้าตะกร้า</v-btn>
+        <div style="text-align: end">
+          <v-btn width="120px" color="primary" @click="addToCart">เพิ่มเข้าตะกร้า</v-btn>
         </div>
       </v-col>
       <!-- <v-col style="text-align: end;">
 
       </v-col> -->
-
     </v-row>
 
     <div v-else>
