@@ -4,6 +4,7 @@
       height="400"
       cycle
       interval="3000"
+      hide-delimiter-background
     >
       <v-carousel-item
         v-for="slide in slides"
@@ -19,8 +20,8 @@
 
 
 const slides = ref([
-  {id: 1, src: 'https://static.nike.com/a/images/w_1280,q_auto,f_auto/eefe97c3-1b38-4e84-b85b-5fd2fe52751c/%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B8%A7-air-jordan-5-grape-hq7978-100.jpg'},
-  {id: 2, src: 'https://d2cva83hdk3bwc.cloudfront.net/adidas-originals-superstar-cloud-white-1.jpg'},
-  {id: 3, src: 'https://assets.central.co.th//adobe/dynamicmedia/deliver/dm-aid--859a5650-8cdb-4590-9a58-2ba1d221ed94/converse-kidschucktaylorallstarsneakerscvk3j231cblk-cds89775424-1.jpg?preferwebp=true&quality=60&width=550'},
+  {id: 1, src: 'https://cms.dmpcdn.com/women/2022/11/10/79c26540-60ba-11ed-b96a-5f02381e8ebb_webp_original.jpg'},
+  {id: 2, src: 'https://cms.dmpcdn.com/women/2022/11/10/78233430-60ba-11ed-ad34-73b808ab9d71_webp_original.jpg'},
+  {id: 3, src: 'https://cms.dmpcdn.com/women/2022/11/10/79886980-60ba-11ed-8a7e-c1297aa48775_webp_original.jpg'},
 ])
 </script>
