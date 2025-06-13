@@ -43,6 +43,17 @@ const required = (v: any) => {
   return !!v || "Field is required";
 };
 
+function parseJwt(token: string) {
+  try {
+    const base64Payload = token.split(".")[1];
+    const payload = atob(base64Payload.replace(/-/g, "+").replace(/_/g, "/"));
+    return JSON.parse(decodeURIComponent(escape(payload)));
+  } catch (e) {
+    console.error("Invalid token", e);
+    return null;
+  }
+}
+
 const onLogin = async () => {
   const payload: LoginPayload = {
     username: username.value,
@@ -54,7 +65,10 @@ const onLogin = async () => {
     if (!result) {
       return;
     }
-    authStore.setToken(result.token);
+    const decoded = parseJwt(result.token);
+
+    authStore.setToken(result.token, Number(decoded.sub));
+
     router.push("/homepage");
   } catch (err) {
     console.error("Login failed", err);
