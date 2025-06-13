@@ -7,15 +7,21 @@
     </v-row>
 
     <v-row v-else-if="product">
-      <v-col cols="8" style="text-align: center">
+      <v-col cols="12" lg="8" style="text-align: center">
         <v-img :src="product.image" height="400px" style="margin: 16px" />
       </v-col>
-      <v-col cols="4" style="display: flex; flex-direction: column; justify-content: space-around">
+      <v-col cols="12" lg="4">
         <p><strong>ชื่อ:</strong> {{ product.title }}</p>
         <p><strong>ราคา:</strong> {{ product.price }} บาท</p>
         <p><strong>รายละเอียด:</strong> {{ product.description }}</p>
-        <v-btn color="primary" @click="addToCart">เพิ่มเข้าตะกร้า</v-btn>
+        <div style="text-align: end;">
+        <v-btn width="120px" color="primary" @click="addToCart" >เพิ่มเข้าตะกร้า</v-btn>
+        </div>
       </v-col>
+      <!-- <v-col style="text-align: end;">
+
+      </v-col> -->
+
     </v-row>
 
     <div v-else>
