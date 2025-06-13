@@ -25,7 +25,7 @@
           <v-row no-gutters>
             <!-- Product Image -->
             <v-col cols="3" sm="2">
-              <v-img :src="item.product.image" height="120" cover class="rounded-s"></v-img>
+              <v-img :src="item.product.image" height="120" class="rounded-s"></v-img>
             </v-col>
 
             <!-- Product Info -->
