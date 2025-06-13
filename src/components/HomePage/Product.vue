@@ -1,9 +1,9 @@
 <template>
   <v-container>
     <v-row>
-      <v-col v-for="product in props.products" :key="product.id" cols="12" sm="6" md="4">
-        <v-card @click="goToDetail(product)">
-          <v-img :src="product.image" cover></v-img>
+      <v-col v-for="product in props.products" :key="product.id" cols="12" sm="6" md="4" lg="3">
+        <v-card style="height: 400px" @click="goToDetail(product)">
+          <v-img :src="product.image" style="height: 260px"></v-img>
 
           <v-card-title>{{ product.title }}</v-card-title>
 
