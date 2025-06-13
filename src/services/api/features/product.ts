@@ -7,6 +7,14 @@ export interface ProductType {
   price: number;
 }
 
+export interface Product {
+  id: number
+  title: string
+  price: number
+  image: string
+  description: string
+}
+
 export default {
 
 async getAll<TRes>(): Promise<TRes | undefined> {
@@ -17,6 +25,8 @@ async getAll<TRes>(): Promise<TRes | undefined> {
     handleApiError(err, 'getAll');
   }
 },
+
+
 
   async getById<TRes>(id: string | number): Promise<TRes | undefined> {
     try {

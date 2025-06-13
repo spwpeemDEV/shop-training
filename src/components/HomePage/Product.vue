@@ -2,14 +2,14 @@
   <v-container>
     <v-row>
       <v-col v-for="product in props.products" :key="product.id" cols="12" sm="6" md="4">
-        <v-card>
+        <v-card @click="goToDetail(product)">
           <v-img :src="product.image" cover></v-img>
 
           <v-card-title>{{ product.title }}</v-card-title>
 
           <v-card-subtitle>ราคา: {{ product.price }} บาท</v-card-subtitle>
           <v-card-actions>
-            <v-btn @click="goToDetail(product)" color="primary"> ดูรายละเอียด </v-btn>
+            <v-btn color="primary"> ดูรายละเอียด </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -24,15 +24,10 @@ import { useRouter } from "vue-router";
 const props = defineProps<{ products: any[] }>();
 const router = useRouter();
 
-// function goToDetail(product: any) {
-//   router.push({
-//     name: 'ProductDetail',
-//     params: { id: product.id },
-//     state: { product }, // ✅ ส่งทั้ง object
-//   })
-// }
-
-function goToDetail(productId: number) {
-  router.push(`/product/${productId}`);
+function goToDetail(product: any) {
+  router.push({
+    name: "ProductDetail",
+    params: { id: product.id },
+  });
 }
 </script>
