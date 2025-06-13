@@ -7,7 +7,7 @@
 import Carousel from "@/components/HomePage/Carousel.vue";
 import Product from "@/components/HomePage/Product.vue";
 import productService, { type ProductType } from "@/services/api/features/product";
-import { onMounted, ref } from "vue";
+
 
 const products = ref<ProductType[]>([]);
 
